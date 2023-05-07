@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="TestApp">
+    <head>
+      <title>Angular - wprowadzenie</title>
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min.js"></script>
+      <script type="text/javascript">
+        var app = angular.module('TestApp', []);
+        app.controller('TestController', ['$scope', function($scope) {
+          this.data = "Hello people!";
+          $scope.var = "Test scope";
+          $scope.tests = ['Test A','Test B','Test C','Test D' ]
+          $scope.customers = [
+            {
+              "name": "Michael",
+              "age": "23"
+            },
+            {
+              "name": "Filip",
+              "age": "36"
+            },
+            {
+              "name": "Dorota",
+              "age": "26"
+            }
+          ];
+        } ]);
+      </script>
+    </head>
+    <body ng-controller="TestController as test">
+      <input type="text" ng-model="variable" />
+      <p>Hello {{ variable | uppercase }}!</p>
+      <hr />
+      <h2>{{ test.data }}</h2>
+      
+      <h3>{{ var }}</h3>
+      <hr />
+      
+      <label ng-repeat="test in tests"><input type="checkbox" />{{test}}</label>
+      <br />
+      <input type="submit" name="submit">
+    </body>
+</html>
